@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #1a1a1a;
+  --foreground: #f0f0f0;
+  --card: #262626;
+  --card-foreground: #f0f0f0;
+  --popover: #262626;
+  --popover-foreground: #f0f0f0;
+  --primary: #8b0000; /* Dark Red */
+  --primary-foreground: #f0f0f0;
+  --secondary: #00008b; /* Deep Blue */
+  --secondary-foreground: #f0f0f0;
+  --muted: #333333;
+  --muted-foreground: #a0a0a0;
+  --accent: #facc15; /* Cyber Yellow */
+  --accent-foreground: #000000;
+  --destructive: #ff0000;
+  --destructive-foreground: #f0f0f0;
+  --border: #f0f0f0; /* Stark White Border */
+  --input: #f0f0f0;
+  --ring: #8b0000;
+  --radius: 0px; 
+  
+  --shadow-brutal: 4px 4px 0px 0px rgba(240,240,240,1);
+  --shadow-brutal-sm: 2px 2px 0px 0px rgba(240,240,240,1);
+  --shadow-brutal-lg: 8px 8px 0px 0px rgba(240,240,240,1);
+}
+
+.dark {
+  /* In this project, dark is the default as per user request, but we keep the same vars */
+  --background: #1a1a1a;
+  --foreground: #f0f0f0;
+  --card: #262626;
+  --border: #f0f0f0;
+  --shadow-brutal: 4px 4px 0px 0px rgba(240,240,240,1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --shadow-brutal: var(--shadow-brutal);
+  --shadow-brutal-sm: var(--shadow-brutal-sm);
+  --shadow-brutal-lg: var(--shadow-brutal-lg);
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .brutal-card {
+    @apply bg-card border-[3px] border-border shadow-brutal transition-all duration-200;
+  }
+  .brutal-card:hover {
+    @apply -translate-x-0.5 -translate-y-0.5 shadow-brutal-lg;
+  }
+  .brutal-btn {
+    @apply bg-primary text-primary-foreground border-[3px] border-border shadow-brutal-sm font-black uppercase tracking-wider px-6 py-3 transition-all duration-75 active:shadow-none active:translate-x-0.5 active:translate-y-0.5;
+  }
+  .brutal-btn-secondary {
+    @apply bg-secondary text-secondary-foreground border-[3px] border-border shadow-brutal-sm font-black uppercase tracking-wider px-6 py-3 transition-all duration-75 active:shadow-none active:translate-x-0.5 active:translate-y-0.5;
+  }
+  .brutal-btn-accent {
+    @apply bg-accent text-accent-foreground border-[3px] border-border shadow-brutal-sm font-black uppercase tracking-wider px-6 py-3 transition-all duration-75 active:shadow-none active:translate-x-0.5 active:translate-y-0.5;
+  }
+  .brutal-input {
+    @apply bg-card border-[3px] border-border text-foreground px-4 py-2 focus:ring-0 focus:outline-none focus:bg-primary/10 transition-colors;
+  }
+}
